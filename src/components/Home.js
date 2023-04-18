@@ -1,7 +1,17 @@
-import React from 'react'
+import { async } from '@firebase/util'
+import { collection, getDocs } from 'firebase/firestore'
+import React, { useEffect } from 'react'
+import { db } from '../firebase'
 import "./Home.css"
 
 function Home() {
+  useEffect(() => {
+    const getPosts = async() => {
+      const data = await getDocs(collection(db, "posts"));
+    };
+    getPosts();
+  }, []);
+
   return (
     <div className='homePage'>
       <div className='postContents'>
