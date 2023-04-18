@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./CreatePost.css"
 
 function CreatePost() {
+  const [title, setTitle] = useState();
+  const [postText, setPostText] = useState();
+
   return (
     <div className='createPostPage'>
       <div className='postContainer'>
