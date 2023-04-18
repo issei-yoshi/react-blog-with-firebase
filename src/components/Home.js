@@ -17,20 +17,24 @@ function Home() {
 
   return (
     <div className='homePage'>
-      <div className='postContents'>
-        <div className='postHeader'>
-          <h1>Title</h1>
+      {postList.map((post) => {
+        return(
+        <div className='postContents' key={post.id}>
+          <div className='postHeader'>
+            <h1>{post.title}</h1>
+          </div>
+          <div className='postTextContainer'>
+            {post.postsText}
+          </div>
+          <div className='nameAndDeleteButton'>
+            <h3>@{post.author.username}</h3>
+            <button>Delete</button>
+          </div>
         </div>
-        <div className='postTextContainer'>
-          Learning React now dayo
-        </div>
-        <div className='nameAndDeleteButton'>
-          <h3>@Issei</h3>
-          <button>Delete</button>
-        </div>
-      </div>
+        );
+      })};
     </div>
-  )
-}
+  );
+};
 
 export default Home
