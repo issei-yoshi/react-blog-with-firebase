@@ -1,9 +1,23 @@
 import React, { useState } from 'react'
 import "./CreatePost.css"
+import { addDoc, collection } from 'firebase/firestore';
+import { auth, db } from '../firebase';
+import { async } from '@firebase/util';
 
 function CreatePost() {
   const [title, setTitle] = useState();
   const [postText, setPostText] = useState();
+
+  const createPost = async() => {
+    await addDoc(collection(db, "posts"), {
+      title: title,
+      postsText: postText,
+      author: {
+        username: auth.currentUser.displayName,
+        id: auth.currentUser.uid
+      }
+    })
+  };
 
   return (
     <div className='createPostPage'>
@@ -24,7 +38,7 @@ function CreatePost() {
             onChange={(e) => setPostText(e.target.value)}
             ></textarea>
         </div>
-        <button className='postButton'>Post</button>
+        <button className='postButton' onClick={createPost}>Post</button>
       </div>
     </div>
   )
