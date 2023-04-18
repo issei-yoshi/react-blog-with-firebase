@@ -1,5 +1,5 @@
 import { async } from '@firebase/util'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase'
 import "./Home.css"
@@ -15,6 +15,11 @@ function Home() {
     getPosts();
   }, []);
 
+  const handleDelete = async (id) => {
+    await deleteDoc(doc(db, "posts", id));
+    window.location.href= "/";
+  };
+
   return (
     <div className='homePage'>
       {postList.map((post) => {
@@ -28,7 +33,7 @@ function Home() {
           </div>
           <div className='nameAndDeleteButton'>
             <h3>@{post.author.username}</h3>
-            <button>Delete</button>
+            <button onClick={() => handleDelete(post.id)}>Delete</button>
           </div>
         </div>
         );
