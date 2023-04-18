@@ -4,6 +4,13 @@ import { auth, provider } from '../firebase';
 
 function Login() {
 
+  const loginInWithGoogle = () => {
+    //Googleでログイン
+    signInWithPopup(auth, provider).then((result) => {
+      console.log(result);
+    });
+  };
+
   return (
     <div>
       <p>Login</p>
