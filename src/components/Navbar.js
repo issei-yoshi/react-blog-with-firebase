@@ -5,7 +5,7 @@ import { faHouse, faFilePen, faArrowRightToBracket } from '@fortawesome/free-sol
 
 import "./Navbar.css"
 
-function Navbar() {
+function Navbar({ isAuth }) {
   return (
     <nav>
       <Link to="/">
