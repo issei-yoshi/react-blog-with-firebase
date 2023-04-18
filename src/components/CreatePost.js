@@ -11,11 +11,18 @@ function CreatePost() {
         <h1>Post Article</h1>
         <div className='inputPost'>
           <div>Title</div>
-          <input type="text" placeholder='put title' />
+          <input
+            type="text"
+            placeholder='put title'
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
         <div className='inputPost'>
           <div>Post</div>
-          <textarea placeholder='put post content'></textarea>
+          <textarea
+            placeholder='put post content'
+            onChange={(e) => setPostText(e.target.value)}
+            ></textarea>
         </div>
         <button className='postButton'>Post</button>
       </div>
