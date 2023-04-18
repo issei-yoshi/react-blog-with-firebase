@@ -1,7 +1,7 @@
 import { async } from '@firebase/util'
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
-import { db } from '../firebase'
+import { auth, db } from '../firebase'
 import "./Home.css"
 
 function Home() {
@@ -33,7 +33,9 @@ function Home() {
           </div>
           <div className='nameAndDeleteButton'>
             <h3>@{post.author.username}</h3>
-            <button onClick={() => handleDelete(post.id)}>Delete</button>
+            {post.author.id === auth.currentUser.uid && (
+              <button onClick={() => handleDelete(post.id)}>Delete</button>
+            )}
           </div>
         </div>
         );
