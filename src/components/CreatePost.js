@@ -3,10 +3,13 @@ import "./CreatePost.css"
 import { addDoc, collection } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import { async } from '@firebase/util';
+import { useNavigate } from 'react-router-dom';
 
 function CreatePost() {
   const [title, setTitle] = useState();
   const [postText, setPostText] = useState();
+
+  const navigate = useNavigate();
 
   const createPost = async() => {
     await addDoc(collection(db, "posts"), {
@@ -15,8 +18,10 @@ function CreatePost() {
       author: {
         username: auth.currentUser.displayName,
         id: auth.currentUser.uid
-      }
-    })
+      },
+    });
+
+    navigate("/");
   };
 
   return (
