@@ -1,7 +1,11 @@
-# Contents
-【Reactアプリ開発】3種類のReactアプリケーションを構築して、Reactの理解をさらに深めるステップアップ講座
+# Version
+- "firebase": "^9.19.1"
+- "react": "^18.2.0"
 
-https://www.udemy.com/course/react-3project-app-udemy/
+# Contents
+- ■【Reactアプリ開発】3種類のReactアプリケーションを構築して、Reactの理解をさらに深めるステップアップ講座
+- https://www.udemy.com/course/react-3project-app-udemy/
+
 
 # Getting Started with Create React App
 
